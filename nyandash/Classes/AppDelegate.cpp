@@ -9,6 +9,8 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
+#include "AppMacros.h"
+#include "cocos-ext.h"
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
 
@@ -27,22 +29,42 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
-    CCDirector *pDirector = CCDirector::sharedDirector();
-    pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
-
-    // turn on display FPS
-    pDirector->setDisplayStats(true);
-
-    // set FPS. the default value is 1.0/60 if you don't call this
-    pDirector->setAnimationInterval(1.0 / 60);
-
-    // create a scene. it's an autorelease object
-    CCScene *pScene = HelloWorld::scene();
-
-    // run
-    pDirector->runWithScene(pScene);
-
-    return true;
+  CCDirector *pDirector = CCDirector::sharedDirector();
+  CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+  pDirector->setOpenGLView(pEGLView);
+  
+  // デザインサイズの設定
+  pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionNoBorder);
+  
+  CCSize frameSize = pEGLView->getFrameSize();
+  
+  std::vector<std::string> searchPath;
+  
+  if (frameSize.height > largeResource.size.height) {
+    // iPad retina 用リソース
+    searchPath.push_back(xlargeResource.dirctory);
+    pDirector->setContentScaleFactor(MIN(xlargeResource.size.height / designResolutionSize.height, xlargeResource.size.width / designResolutionSize.width));
+  }
+  else if (frameSize.height > smallResource.size.height){
+    // iPad 用
+    searchPath.push_back(largeResource.dirctory);
+    pDirector->setContentScaleFactor(MIN(largeResource.size.height / designResolutionSize.height, largeResource.size.width / designResolutionSize.width));
+  }
+  else {
+    // iPhone 用
+    searchPath.push_back(smallResource.dirctory);
+    pDirector->setContentScaleFactor(MIN(smallResource.size.height / designResolutionSize.height, smallResource.size.width / designResolutionSize.width));
+  }
+  
+  // リソースディレクトリ
+  CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
+  pDirector->setDisplayStats(true);
+  pDirector->setAnimationInterval(1.0 / 60);
+  
+  CCScene *pScene  = HelloWorld::scene();
+  pDirector->runWithScene(pScene);
+  
+  return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

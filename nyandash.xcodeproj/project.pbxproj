@@ -280,6 +280,7 @@
 		F8C4B83918B62D670072F407 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C4B83818B62D670072F407 /* libwebsockets.a */; };
 		F8C4B83F18B62D670072F407 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8C4B83E18B62D670072F407 /* AppDelegate.cpp */; };
 		F8C4B84218B62D670072F407 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8C4B84118B62D670072F407 /* HelloWorldScene.cpp */; };
+		F8C4B84D18B62E050072F407 /* AppMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8C4B84B18B62E050072F407 /* AppMacros.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -873,6 +874,8 @@
 		F8C4B83E18B62D670072F407 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		F8C4B84018B62D670072F407 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		F8C4B84118B62D670072F407 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		F8C4B84B18B62E050072F407 /* AppMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppMacros.cpp; path = Classes/AppMacros.cpp; sourceTree = "<group>"; };
+		F8C4B84C18B62E050072F407 /* AppMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppMacros.h; path = Classes/AppMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2093,6 +2096,8 @@
 		F8C4B83C18B62D670072F407 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F8C4B84B18B62E050072F407 /* AppMacros.cpp */,
+				F8C4B84C18B62E050072F407 /* AppMacros.h */,
 				F8C4B83D18B62D670072F407 /* AppDelegate.h */,
 				F8C4B83E18B62D670072F407 /* AppDelegate.cpp */,
 				F8C4B84018B62D670072F407 /* HelloWorldScene.h */,
@@ -2250,6 +2255,7 @@
 				F8C4B81118B62D670072F407 /* cpArbiter.c in Sources */,
 				F8C4B6E318B62D650072F407 /* CCBKeyframe.cpp in Sources */,
 				F8C4B68618B62D650072F407 /* ZipUtils.cpp in Sources */,
+				F8C4B84D18B62E050072F407 /* AppMacros.cpp in Sources */,
 				F8C4B78B18B62D660072F407 /* WebSocket.cpp in Sources */,
 				F8C4B51218B62D630072F407 /* CCArray.cpp in Sources */,
 				F8C4B69518B62D650072F407 /* CCTextureAtlas.cpp in Sources */,
