@@ -15,6 +15,7 @@
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 using namespace CocosDenshion;
 
 AppDelegate::AppDelegate()
@@ -61,7 +62,18 @@ bool AppDelegate::applicationDidFinishLaunching()
   pDirector->setDisplayStats(true);
   pDirector->setAnimationInterval(1.0 / 60);
   
-  CCScene *pScene  = HelloWorld::scene();
+  // cocosbuuilder のファイルを読み込みゲーム画面を生成
+  CCNodeLoaderLibrary* ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+  CCBReader* ccbReader = new CCBReader(ccNodeLoaderLibrary);
+  CCNode* node = ccbReader->readNodeGraphFromFile("GameLayer.ccbi");
+  
+  // シーンを用意し、ゲーム画面を設置する
+  CCScene* pScene = CCScene::create();
+  if (node != NULL) {
+    pScene->addChild(node);
+  }
+  
+  ccbReader->release();
   pDirector->runWithScene(pScene);
   
   return true;
